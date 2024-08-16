@@ -9,10 +9,16 @@ import traceback
 import sys
 import warnings
 
+from dotenv import load_dotenv
+from os import environ
+
 log.basicConfig(filename='Upload.log', format='%(levelname)s:%(message)s', level=log.DEBUG)
 myl = log.getLogger()
 warnings.simplefilter("ignore", UserWarning)
-client = OdooClient(URL, DATABSE, USERNAME, PASSWORD/API_KEY)
+
+load_dotenv()
+
+client = OdooClient(environ['URL'], environ['DATABSE'], environ['USERNAME'], environ['API_KEY'])
 
 
 class BOM:
